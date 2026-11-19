@@ -18,13 +18,13 @@ pipeline {
 
         stage('Automated Tests') {
             steps {
-                bat '"C:/Users/manib/AppData/Local/Programs/DockerDesktop/resources/bin/docker.exe" build -t campus-platform:3 .'
+                bat '.venv-ci\\Scripts\\python -m pytest -v'
             }
         }
 
         stage('Docker Build') {
             steps {
-                bat 'docker build -t campus-platform:%BUILD_NUMBER% .'
+                bat '"C:/Users/manib/AppData/Local/Programs/DockerDesktop/resources/bin/docker.exe" build -t campus-platform:%BUILD_NUMBER% .'
             }
         }
     }
