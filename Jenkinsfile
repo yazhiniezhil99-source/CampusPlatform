@@ -11,7 +11,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'py -3.12 -m venv .venv-ci'
+                bat '"C:/Users/manib/AppData/Local/Programs/Python/Python312/python.exe" -m venv .venv-ci'
                 bat '.venv-ci\\Scripts\\python -m pip install -r requirements.txt'
             }
         }
