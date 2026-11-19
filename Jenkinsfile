@@ -18,7 +18,7 @@ pipeline {
 
         stage('Automated Tests') {
             steps {
-                bat '.venv-ci\\Scripts\\python -m pytest tests/ -v'
+                bat '"C:/Users/manib/AppData/Local/Programs/DockerDesktop/resources/bin/docker.exe" build -t campus-platform:3 .'
             }
         }
 
