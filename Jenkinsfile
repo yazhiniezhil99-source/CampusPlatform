@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -37,7 +36,7 @@ pipeline {
                         usernameVariable: 'SSH_USER'
                     )
                 ]) {
-                    bat '"C:/Windows/System32/OpenSSH/ssh.exe" -i "%SSH_KEY%" -o StrictHostKeyChecking=accept-new %SSH_USER%@51.21.161.11 "cd ~/CampusPlatform && git pull origin main && docker build -t campus-platform:latest . && (docker rm -f campus-platform-container >/dev/null 2>&1 || true) && docker run -d --name campus-platform-container --restart unless-stopped -p 80:8000 campus-platform:latest"'
+                    bat 'icacls "%SSH_KEY%" /inheritance:r && icacls "%SSH_KEY%" /grant:r "SYSTEM:F" && "C:/Windows/System32/OpenSSH/ssh.exe" -i "%SSH_KEY%" -o StrictHostKeyChecking=accept-new %SSH_USER%@51.21.161.11 "cd ~/CampusPlatform && git pull origin main && docker build -t campus-platform:latest . && (docker rm -f campus-platform-container >/dev/null 2>&1 || true) && docker run -d --name campus-platform-container --restart unless-stopped -p 80:8000 campus-platform:latest"'
                 }
             }
         }
